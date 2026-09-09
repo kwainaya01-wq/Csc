@@ -1117,6 +1117,16 @@ if (printBtn) {
             message: "Order Confirmed! PNR: " + pnr + "\nService: " + selectedService.name
           })
         }).catch(function(){});
+                   // Customer Auto-Reply Email (EmailJS)
+    if (typeof emailjs !== 'undefined') {
+      emailjs.send("service_aqkn0rh", "template_9e3v0cr", {
+        email: email,
+        name: name,
+        pnr: pnr,
+        service_name: selectedService.name
+      }, "uA8iv7K28tUPp8jRg").catch(function(err){ console.log(err); });
+    }
+              
       });
     }
 
